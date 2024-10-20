@@ -1,12 +1,70 @@
-<html>
-<head>
-    <title>Demo  page</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MIS Utility</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
-    <h1> Welcome to my first HTML Page 2 Test.</h1>
-    <p>This is paragraph.</p>
-    <script src="script.js"> </script>
-</body>
+    <body>
+        <h1>Upload an Excel File</h1>
+        <input type="file" id="file-input" accept=".xlsx, .xls" />
+        <select id="sheet-drop-down" style="display:none;">
+        </select>
+
+        <button id="merge-button" style="display: none;" onclick="mergeSheets()">Merge</button>
+        <button id="reset" style="display: none;">🔄 Reset</button>
+
+        <div id="office-ui" style="display: none;">
+            <select id="office-drop-down">
+                <option value="show-main-table">Show Main Table</option>
+                <option value="show-so-only">Show Only S.O. From Main Table</option>
+                <option value="show-bo-only">Show Only B.O. From Main Table</option>
+                <option value="show-all-so">Show All S.O.</option>
+                <option value="show-all-bo">Show All B.O.</option>
+                <option value="add-all-so">Add All S.O. To Main Table</option>
+                <option value="add-all-bo">Add All B.O. To Main Table</option>
+                <option value="add-all-so-bo">Add All S.O. and B.O. To Main Table</option>
+            </select>
+        </div>
+        
+        <button id="sum" style="display: none; margin-left: 20px;">Total</button>
+        
+        <div id="sorting-ui" style="display: none;">
+            <label for="sort-drop-down">Sort Table By:</label>
+            <select id="sort-drop-down"></select>
+            <div style="display: inline-block; margin-left: 10px;">
+                <label>
+                    <input type="radio" name="sortOrder" value="ascending" checked>
+                    Ascending
+                </label>
+                <label>
+                    <input type="radio" name="sortOrder" value="descending">
+                    Descending
+                </label>
+            </div>
+
+            <button id="sort" style="margin-left: 10px;">Sort</button>
+        </div>
+
+        <button id="save-as-excel" style="margin-left: 10px;">Save as Excel</button>
+
+        <table id="data-table">
+        <thead>
+            <tr></tr> <!-- Header will be populated dynamically -->
+        </thead>
+        <tbody></tbody>
+        </table>
+        
+        <table id="master-table" style="display: none;">
+        <thead>
+            <tr></tr> <!-- Header will be populated dynamically -->
+        </thead>
+        <tbody></tbody>
+        </table>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+        <script src="script.js"></script>
+    </body>
 </html>
